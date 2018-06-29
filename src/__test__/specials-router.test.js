@@ -1,11 +1,10 @@
 'use strict';
 
 import superagent from 'superagent';
-import { start } from 'repl';
 import { startServer, stopServer } from '../lib/server';
 import Character from '../model/Character';
-import Special from '../model/Special';
-import createMockDataPromise from './lib/SpecialMock';
+import Special from '../model/Specials';
+import createMockDataPromise from './lib/specialMock';
 
 const apiUrl = `http://localhost: ${process.env.PORT}/api/students`;
 
