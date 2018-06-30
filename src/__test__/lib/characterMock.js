@@ -4,7 +4,7 @@ import Character from '../../model/Character'
 
 export default () => {
   const mockResourceToPost = {
-    projectile: 'hadouken',
+    name: 'Hadouken',
   };
   return new Character(mockResourceToPost).save();
 };
