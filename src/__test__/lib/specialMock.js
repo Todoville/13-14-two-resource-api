@@ -11,7 +11,8 @@ export default () => {
     })
     .then(() => {
       const mockSpecial = {
-        reversal: 'shoryuken',
+        name: 'Shoryuken',
+        style: 'Reversal',
         characterId: mockData.character._id,
       };
       return new Special(mockSpecial).save();

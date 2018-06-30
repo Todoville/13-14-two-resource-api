@@ -4,21 +4,14 @@ import mongoose from 'mongoose';
 import Character from './Character';
 
 const specialsSchema = mongoose.Schema({
-  projectile: {
+  name: {
     type: String,
     required: true,
   },
-  reversal: {
+  style: {
     type: String,
     required: true,
-  },
-  gapclose: {
-    type: String,
-    required: true,
-  },
-  commandgrab: {
-    type: String,
-    required: true,
+    enum: ['Reversal', 'Projectile', 'Gap Closer', 'Command Grab']
   },
   characterID: {
     type: mongoose.Schema.Types.ObjectId,

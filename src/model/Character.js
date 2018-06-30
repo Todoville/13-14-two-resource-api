@@ -9,7 +9,7 @@ const characterSchema = mongoose.Schema({
     unique: true,
   },
   charge: {
-    type: String,
+    type: Boolean,
     unique: false,
   },
   specials: [

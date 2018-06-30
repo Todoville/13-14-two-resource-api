@@ -3,19 +3,19 @@
 import { Router } from 'express';
 import HttpErrors from 'http-errors';
 import logger from '../lib/logger';
-import Specials from '../model/Specials';
+import Special from '../model/Specials';
 
 const specialsRouter = new Router();
 
 specialsRouter.post('/api/Specials', (request, response, next) => {
-  Specials.init()
+  Special.init()
     .then(() => {
       logger.log(logger.INFO, `SPECIALS ROUTER: POST BEFORE SAVE: ${JSON.stringify(request.body)}`);
-      return new Specials(request.body).save();
+      return new Special(request.body).save();
     })
-    .then((newSpecials) => {
-      logger.log(logger.INFO, `SPECIALS ROUTER: POST AFTER SAVE: ${JSON.stringify(newSpecials)}`);
-      response.JSON(newSpecials);
+    .then((newSpecial) => {
+      logger.log(logger.INFO, `SPECIALS ROUTER: POST AFTER SAVE: ${JSON.stringify(newSpecial)}`);
+      response.JSON(newSpecial);
     })
     .catch(next);
 });
@@ -25,13 +25,13 @@ specialsRouter.get('/api/Specials/:id?', (request, response, next) => {
     return next(new HttpErrors(400, 'Did not enter an ID'));
   }
 
-  Specials.init()
+  Special.init()
     .then(() => {
-      return Specials.findOne({ _id: request.params.id });
+      return Special.findOne({ _id: request.params.id });
     })
-    .then((foundSpecials) => {
-      logger.log(logger.INFO, `SPECIALS ROUTER: AFTER GETTING SPECIALS ${JSON.stringify(foundSpecials)}`);
-      return response.JSON(foundSpecials);
+    .then((foundSpecial) => {
+      logger.log(logger.INFO, `SPECIALS ROUTER: AFTER GETTING SPECIALS ${JSON.stringify(foundSpecial)}`);
+      return response.JSON(foundSpecial);
     })
     .catch(next);
   return undefined;

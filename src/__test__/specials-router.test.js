@@ -6,7 +6,7 @@ import Character from '../model/Character';
 import Special from '../model/Specials';
 import createMockDataPromise from './lib/specialMock';
 
-const apiUrl = `http://localhost: ${process.env.PORT}/api/students`;
+const apiUrl = `http://localhost: ${process.env.PORT}/api/specials`;
 
 beforeAll(startServer);
 afterAll(stopServer);
@@ -17,15 +17,35 @@ afterEach(() => {
   ]);
 });
 
+describe('PUT /api/specials', () => {
+  test('200 PUT for successful updating of a special move', () => {
+    return createMockDataPromise()
+      .then((mockData) => {
+        return superagent.get(`${apiUrl}/${mockData.special._id}`)
+          .send({ name: 'Flash Kick', style: 'Reversal'})
+          .then((response) => {
+            expect(response.status).toEqual(200);
+            expect(response.body.name).toEqual('Flash Kick');
+            expect(response.body.style).toEqual('Reversal');
+            expect(response.body._id.toString()).toEqual(mockData.special._id);
+          })
+          .catch((err) => {
+            throw err;
+          });
+      })
+      .catch((err) => {
+        throw err;
+      });
+  });
+});
+
 describe('POST /api/specials', () => {
   test('200 POST for successful posting of a special move', () => {
     return createMockDataPromise()
       .then((mockData) => {
         const mockSpecial = {
-          projectile: 'hadouken',
-          reversal: 'shoryuken',
-          gapclose: 'tatsu',
-          commandgrab: null, 
+          name: 'Shoryuken',
+          style: 'Reversal',
           characterId: mockData.Character._id,
         };
 
