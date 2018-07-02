@@ -75,3 +75,18 @@ describe('GET /api/specials', () => {
       });
   });
 });
+
+describe('DELETE /api/specials', () => {
+  test('200 DELETE for successful deleting of a special', () => {
+    return createMockDataPromise()
+      .then((mockData) => {
+        return superagent.del(`${apiUrl}/${mockData.special._id}`);
+      })
+      .then((response) => {
+        expect(response.status).toEqual(204);
+      })
+      .catch((err) => {
+        throw err;
+      });
+  });
+});
