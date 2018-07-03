@@ -6,7 +6,7 @@ import Character from '../model/Character';
 
 const characterRouter = new Router();
 
-characterRouter.post('/api/Characters', (request, response, next) => {
+characterRouter.post('/api/characters', (request, response, next) => {
   Character.init()
     .then(() => {
       logger.log(logger.INFO, `CHARACTER ROUTER BEFORE SAVE: Saved a new character ${JSON.stringify(request.body)}`);
@@ -19,7 +19,7 @@ characterRouter.post('/api/Characters', (request, response, next) => {
     .catch(next);
 });
 
-characterRouter.get('/api/Characters/:id?', (request, response, next) => {
+characterRouter.get('/api/characters/:id?', (request, response, next) => {
   Character.init()
     .then(() => {
       return Character.findOne({ _id: request.params.id });

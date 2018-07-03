@@ -6,10 +6,10 @@ import Character from '../model/Character';
 import Special from '../model/Specials';
 import createMockDataPromise from './lib/specialMock';
 
-const apiUrl = `http://localhost: ${process.env.PORT}/api/specials`;
+const apiUrl = `http://localhost:${process.env.PORT}/api/specials`;
 
 beforeAll(startServer);
-afterAll(stopServer);
+// afterAll(stopServer);
 afterEach(() => {
   Promise.all([
     Character.remove({}),
@@ -22,7 +22,7 @@ describe('PUT /api/specials', () => {
     return createMockDataPromise()
       .then((mockData) => {
         return superagent.get(`${apiUrl}/${mockData.special._id}`)
-          .send({ name: 'Flash Kick', style: 'Reversal'})
+          .send({ name: 'Flash Kick', style: 'Reversal' })
           .then((response) => {
             expect(response.status).toEqual(200);
             expect(response.body.name).toEqual('Flash Kick');

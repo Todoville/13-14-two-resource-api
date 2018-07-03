@@ -1,6 +1,6 @@
 'use strict';
 
-import Special from '../../model/Special';
+import Special from '../../model/Specials';
 import characterMockPromise from './characterMock';
 
 export default () => {
@@ -13,7 +13,7 @@ export default () => {
       const mockSpecial = {
         name: 'Shoryuken',
         style: 'Reversal',
-        characterId: mockData.character._id,
+        characterId: mockData.Character._id,
       };
       return new Special(mockSpecial).save();
     })

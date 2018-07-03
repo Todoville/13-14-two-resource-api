@@ -8,13 +8,14 @@ import createMockCharactersPromise from './lib/characterMock';
 const apiUrl = `http://localhost:${process.env.PORT}/api/characters`;
 
 beforeAll(startServer);
-afterAll(stopServer);
+// afterAll(stopServer);
 afterEach(() => Character.remove({}));
 
 describe('POST /api/characters', () => {
   const mockRyu = {
     name: 'Ryu',
-    charge: 'No',
+    charge: false,
+    specials: [],
     
   };
 

@@ -7,7 +7,7 @@ import Special from '../model/Specials';
 
 const specialsRouter = new Router();
 
-specialsRouter.post('/api/Specials', (request, response, next) => {
+specialsRouter.post('/api/specials', (request, response, next) => {
   Special.init()
     .then(() => {
       logger.log(logger.INFO, `SPECIALS ROUTER: POST BEFORE SAVE: ${JSON.stringify(request.body)}`);
@@ -20,7 +20,7 @@ specialsRouter.post('/api/Specials', (request, response, next) => {
     .catch(next);
 });
 
-specialsRouter.get('/api/Specials/:id?', (request, response, next) => {
+specialsRouter.get('/api/specials/:id?', (request, response, next) => {
   if (!request.params.id) {
     return next(new HttpErrors(400, 'Did not enter an ID'));
   }

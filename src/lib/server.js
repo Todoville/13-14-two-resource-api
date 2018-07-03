@@ -4,15 +4,15 @@ import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import logger from './logger';
-import characterRouter from '../router/characterRouter';
-import specialsRouter from '../router/specialsRouter';
+import characterRouter from '../router/character-router';
+import specialsRouter from '../router/specials-router';
 
-import errorMiddleWare from '../lib/middleware/error-middleware';
-import loggerMiddleWare from '../lib/middleware/logger-middleware';
+import errorMiddleWare from './middleware/error-middleware';
+import loggerMiddleWare from './middleware/logger-middleware';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-let server = null;
+let server;
 
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
