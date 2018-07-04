@@ -4,7 +4,7 @@ import Character from '../../model/Character';
 
 export default () => {
   const mockResourceToPost = {
-    name: 'Ryu',
+    name: 'Ken',
     charge: false,
     specials: [],
   };

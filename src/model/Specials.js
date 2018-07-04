@@ -16,13 +16,13 @@ const specialsSchema = mongoose.Schema({
   characterID: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
-    ref: 'Character',
+    ref: 'Characters',
   },
 }, { timestamps: true });
 
 const skipInit = process.env.NODE_ENV === 'development';
 
-export default mongoose.model('Character', specialsSchema, 'Character', skipInit); /* eslint-disable-line */
+export default mongoose.model('Specials', specialsSchema, 'Specials', skipInit); /* eslint-disable-line */
 
 function specialsPreHook(done) {
   return Character.findById(this.characterID)

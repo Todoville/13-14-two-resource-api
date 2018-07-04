@@ -13,7 +13,7 @@ export default () => {
       const mockSpecial = {
         name: 'Shoryuken',
         style: 'Reversal',
-        characterId: mockData.Character._id,
+        characterID: mockData.Character._id,
       };
       return new Special(mockSpecial).save();
     })
