@@ -52,7 +52,8 @@ characterRouter.delete('/api/characters/:id?', (request, response, next) => {
           id: character._id,
         };
         return response.status(200).send(deleteSuccess);
-      });
+      })
+        .catch(next);
     });
 });
 

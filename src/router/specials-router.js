@@ -60,7 +60,8 @@ specialsRouter.delete('/api/specials/:id?', (request, response, next) => {
           id: special._id,
         };
         return response.status(204).send(deleteSuccess);
-      });
+      })
+        .catch(next);
     });
 });
 

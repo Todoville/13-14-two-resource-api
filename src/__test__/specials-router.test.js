@@ -21,11 +21,9 @@ describe('api/specials', () => {
     test('200 PUT for successful updating of a special move', () => {
       return createMockDataPromise()
         .then((mockData) => {
-          console.log(mockData, '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
           return superagent.put(`${apiUrl}/${mockData.special._id}`)
             .send({ name: 'Flash Kick', style: 'Reversal' })
             .then((response) => {
-              console.log(response.body);
               expect(response.status).toEqual(200);
               expect(response.body.name).toEqual('Flash Kick');
               expect(response.body.style).toEqual('Reversal');
@@ -82,7 +80,6 @@ describe('api/specials', () => {
     test('200 DELETE for successful deleting of a special', () => {
       return createMockDataPromise()
         .then((mockData) => {
-          console.log(mockData, '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
           return superagent.del(`${apiUrl}/${mockData.special._id}`);
         })
         .then((response) => {
