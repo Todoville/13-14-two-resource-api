@@ -9,20 +9,20 @@ const specialsSchema = mongoose.Schema({
     required: true,
   },
   style: {
-    type: String,
     required: true,
-    enum: ['Reversal', 'Projectile', 'Gap Closer', 'Command Grab']
+    type: String,
+    enum: ['Reversal', 'Projectile', 'Gap Closer', 'Command Grab'],
   },
   characterID: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
-    ref: 'Character',
+    ref: 'Characters',
   },
 }, { timestamps: true });
 
 const skipInit = process.env.NODE_ENV === 'development';
 
-export default mongoose.model('Character', characterSchema, 'Character', skipInit); /* eslint-disable-line */
+export default mongoose.model('Specials', specialsSchema, 'Specials', skipInit); /* eslint-disable-line */
 
 function specialsPreHook(done) {
   return Character.findById(this.characterID)

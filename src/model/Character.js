@@ -21,9 +21,9 @@ const characterSchema = mongoose.Schema({
 }, { timestamps: true });
 
 characterSchema.pre('findOne', function preHookCallback(done) {
-  this.populate('specials');
+  this.populate('Specials');
   done();
 });
 
 const skipInit = process.env.NODE_ENV === 'development';
-export default mongoose.model('characters', characterSchema, 'characters', skipInit);
+export default mongoose.model('Characters', characterSchema, 'Characters', skipInit);
